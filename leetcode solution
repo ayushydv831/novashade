@@ -1,0 +1,19 @@
+class Solution(object):
+    def maximumPopulation(self, logs):
+        years = [0] * 2051  # Since 1950 ≤ birth < death ≤ 2050
+        
+        for birth, death in logs:
+            years[birth] += 1
+            years[death] -= 1
+        
+        max_pop = 0
+        max_year = 1950
+        curr_pop = 0
+        
+        for year in range(1950, 2051):
+            curr_pop += years[year]
+            if curr_pop > max_pop:
+                max_pop = curr_pop
+                max_year = year
+        
+        return max_year
