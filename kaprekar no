@@ -1,0 +1,27 @@
+def kaprekarNumbers(p, q):
+    kaprekar_numbers_found = []
+    for n in range(p, q + 1):
+        d = len(str(n))
+      
+        n_squared_str = str(n * n)
+        
+       
+        
+        if len(n_squared_str) < d: 
+                                  
+            left_part = 0
+            right_part = int(n_squared_str)
+        else:
+            left_part_str = n_squared_str[:-d]
+            right_part_str = n_squared_str[-d:]
+            
+            left_part = int(left_part_str) if left_part_str else 0
+            right_part = int(right_part_str)
+          
+        if left_part + right_part == n:
+            kaprekar_numbers_found.append(n)
+            
+    if kaprekar_numbers_found:
+        print(*kaprekar_numbers_found)
+    else:
+        print("INVALID RANGE")
